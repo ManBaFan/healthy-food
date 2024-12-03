@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>营养生活 - 管理系统</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>营养生活</h1>
+                <p>管理系统</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="active" data-page="dashboard">
+                    <i class="fas fa-chart-line"></i> 仪表盘
+                </li>
+                <li data-page="orders">
+                    <i class="fas fa-shopping-cart"></i> 订单管理
+                </li>
+                <li data-page="menu">
+                    <i class="fas fa-utensils"></i> 菜单管理
+                </li>
+                <li data-page="customers">
+                    <i class="fas fa-users"></i> 客户管理
+                </li>
+                <li data-page="nutrition">
+                    <i class="fas fa-apple-alt"></i> 营养数据
+                </li>
+                <li data-page="settings">
+                    <i class="fas fa-cog"></i> 系统设置
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> 退出登录</button>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="搜索...">
+                </div>
+                <div class="user-menu">
+                    <span class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </span>
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/40" alt="用户头像">
+                        <span>管理员</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Page -->
+            <div class="page active" id="dashboard">
+                <h2>仪表盘</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>今日订单</h3>
+                            <p class="stat-number">128</p>
+                            <p class="stat-change positive">+12.5%</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>活跃用户</h3>
+                            <p class="stat-number">1,254</p>
+                            <p class="stat-change positive">+5.3%</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-yuan-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>营业额</h3>
+                            <p class="stat-number">¥15,680</p>
+                            <p class="stat-change positive">+8.2%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>销售趋势</h3>
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>热门商品</h3>
+                        <canvas id="popularItemsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="recent-orders">
+                    <h3>最新订单</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>订单编号</th>
+                                <th>客户</th>
+                                <th>商品</th>
+                                <th>金额</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#12345</td>
+                                <td>张三</td>
+                                <td>藜麦能量碗 x2</td>
+                                <td>¥176</td>
+                                <td><span class="status pending">处理中</span></td>
+                                <td>
+                                    <button class="btn-action"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-action"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#12344</td>
+                                <td>李四</td>
+                                <td>地中海沙拉 x1</td>
+                                <td>¥68</td>
+                                <td><span class="status completed">已完成</span></td>
+                                <td>
+                                    <button class="btn-action"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-action"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Other pages will be shown/hidden via JavaScript -->
+            <div class="page" id="orders">
+                <h2>订单管理</h2>
+                <!-- Order management content -->
+            </div>
+
+            <div class="page" id="menu">
+                <h2>菜单管理</h2>
+                <!-- Menu management content -->
+            </div>
+
+            <div class="page" id="customers">
+                <h2>客户管理</h2>
+                <!-- Customer management content -->
+            </div>
+
+            <div class="page" id="nutrition">
+                <h2>营养数据</h2>
+                <!-- Nutrition data content -->
+            </div>
+
+            <div class="page" id="settings">
+                <h2>系统设置</h2>
+                <!-- Settings content -->
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
